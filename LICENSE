@@ -1,0 +1,90 @@
+MIT License
+
+Copyright © 2025-2026 Data Finn (datafinn.com)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+
+CONTEXT
+
+This agent harness — including its context files, skill definitions, memory
+structures, and methodology — was designed and authored by Data Finn
+(https://datafinn.com) and is provided to AFAS / Joint Technology Solutions
+as part of contracted development services.
+
+It is published under the MIT License to encourage transparency and reuse.
+The patterns and methodology are freely adaptable for other projects.
+
+================================================================================
+
+ACKNOWLEDGMENTS — AI PLATFORMS & TOOLS
+
+This agent harness is designed to operate with large language model (LLM)
+platforms. The following AI providers and tools are referenced or integrated:
+
+AI PROVIDERS
+- Anthropic Claude (https://www.anthropic.com/) — Proprietary (API usage)
+  Large language model powering the primary development agent.
+  Subject to Anthropic's usage policies and terms of service.
+
+- Cursor IDE (https://www.cursor.com/) — Proprietary
+  AI-powered development environment used to run and interact with agents.
+  Subject to Cursor's terms of service.
+
+DEVELOPMENT TOOLS & FRAMEWORKS (used in the AFAS codebase this harness supports)
+- Angular (https://angular.io/) — MIT License
+  Frontend framework for the AFAS web application.
+
+- Node.js (https://nodejs.org/) — MIT License
+  JavaScript runtime for Lambda functions.
+
+- TypeScript (https://www.typescriptlang.org/) — Apache License 2.0
+  Typed superset of JavaScript used throughout the codebase.
+
+- AWS SAM CLI (https://aws.amazon.com/serverless/sam/) — Apache License 2.0
+  Framework for building and running serverless applications locally.
+
+- Docker (https://www.docker.com/) — Apache License 2.0
+  Containerization platform used by SAM local.
+
+AWS SERVICES (Commercial Cloud Provider)
+- Amazon Web Services (https://aws.amazon.com/) — AWS Customer Agreement
+  Cloud infrastructure provider.
+  - AWS Lambda — serverless compute
+  - Amazon DynamoDB — NoSQL database
+  - Amazon Cognito — user authentication and authorization
+  - Amazon API Gateway — REST API management
+  - AWS CloudWatch — monitoring and logging
+  - Amazon S3 — object storage
+
+================================================================================
+
+OPEN SOURCE LICENSE COMPLIANCE
+
+Data Finn uses the above-listed open-source components in accordance with
+their respective licenses. The MIT license applied here covers only the agent
+harness methodology and documentation authored by Data Finn — it does not
+extend to or override the licenses of any third-party tools, frameworks,
+or services listed above.
+
+================================================================================
+
+EFFECTIVE DATE: March 11, 2026
+LAST UPDATED: May 16, 2026
