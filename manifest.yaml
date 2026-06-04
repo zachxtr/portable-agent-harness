@@ -1,0 +1,34 @@
+version: 0.1.0
+harness:
+  implements: full-cry
+  description: Portable coding agent harness with Full CRY! methodology
+
+install:
+  default_path: .agents
+  default_agent: myAgent
+
+placeholders:
+  - PROJECT_NAME
+  - USER_NAME
+  - USER_WHAT_TO_CALL
+  - AGENT_DISPLAY_NAME
+  - CODE_LOG_DATE
+  - INSTALL_DATE
+
+required_paths:
+  - README.md
+  - myAgent/SESSION.md
+  - myAgent/MEMORY.md
+  - myAgent/IDENTITY.md
+  - myAgent/SOUL.md
+  - myAgent/USER.md
+  - myAgent/memory/TODO.md
+  - myAgent/memory/CODING_PRINCIPLES.md
+  - myAgent/memory/ARCHITECTURE_CONCEPTS.md
+  - myAgent/memory/wip_TopicX_work_plan.md
+  - myAgent/memory/full-cry-sdlc/Full_CRY_Overview.md
+  - myAgent/memory/data-experience-journey/DATA_EXPERIENCE_JOURNEY.md
+  - myAgent/skills/code-log-entries/SKILL.md
+  - code-log/code-log-{{CODE_LOG_DATE}}.md
+
+template_code_log_pattern: code-log-{{CODE_LOG_DATE}}.md
