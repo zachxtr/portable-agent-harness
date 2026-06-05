@@ -1,7 +1,7 @@
 # Portable Agent Harness
 
 > Maintained by [Data Finn](https://datafinn.com).  
-> Built on **[Full CRY!](#methodology--full-cry)** — Data Finn's AI-age development methodology (see below).
+> Built on **[Full CRY!](./template/myAgent/memory/full-cry-sdlc/Full_CRY_Overview.md)** — Data Finn's AI-age development methodology (see below).
 > Licensed under the MIT open-source [LICENSE](./LICENSE) — the patterns and methodology are freely adaptable for other projects.
 
 A structured **agent harness** you install into any repository so your AI coding agent keeps continuity between sessions including: persona, procedures, project memory, and methodology.
@@ -22,7 +22,7 @@ Think of it as the agent's **onboarding kit and working memory**. Without it, ev
 | **Refactor** | Keep code clear and consistent — rename, split, and propagate until it reads like a good essay. |
 | **Yield** | Run it locally, click the UI, check the data — validate before the next CREATE cycle. |
 
-This harness encodes Full CRY! in practice: session safeguards, coding protocols in `SOUL.md`, yield checkpoints via code logs, and depth files loaded only when needed. Full treatise (aligned principles, gotchas, origin story): [`joshua/memory/full-cry-sdlc/Full_CRY_Overview.md`](./joshua/memory/full-cry-sdlc/Full_CRY_Overview.md).
+This harness encodes Full CRY! in practice: session safeguards, coding protocols in `SOUL.md`, yield checkpoints via code logs, and depth files loaded only when needed. Full treatise (aligned principles, gotchas, origin story): [Full CRY! overview](./template/myAgent/memory/full-cry-sdlc/Full_CRY_Overview.md).
 
 ---
 
