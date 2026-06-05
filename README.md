@@ -1,7 +1,7 @@
 # Portable Agent Harness
 
 > Maintained by [Data Finn](https://datafinn.com).  
-> Built on **[Full CRY!](#methodology--full-cry!)** — Data Finn's AI-age development methodology (see below).
+> Built on **[Full CRY!](#methodology--full-cry)** — Data Finn's AI-age development methodology (see below).
 > Licensed under the MIT open-source [LICENSE](./LICENSE) — the patterns and methodology are freely adaptable for other projects.
 
 A structured **agent harness** you install into any repository so your AI coding agent keeps continuity between sessions including: persona, procedures, project memory, and methodology.
