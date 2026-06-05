@@ -47,23 +47,21 @@ Each agent has five core files. Each owns a distinct scope — no overlap.
 | Location | Contents |
 |----------|----------|
 | `memory/*.md` (root) | Project topics (TODO, architecture, PA harness, WIPs) |
-| `memory/full-cry-sdlc/` | **Full CRY!** methodology — [overview above](#methodology--full-cry); full doc in folder |
+| `memory/full-cry-sdlc/` | **Full CRY!** methodology document in folder |
 | `memory/data-experience-journey/` | Data Experience (DX) |
 | `memory/.archive/` | Retired — do not reference |
 
-Session procedures and the full harness guide: `joshua/SESSION.md`.
+Session procedures and the full harness guide: `myAgent/SESSION.md`.
 
 ---
 
 ## Skills
 
-Reusable agent procedures live in `joshua/skills/`. Load the relevant skill before performing any recurring task.
+Reusable agent procedures live in `myAgent/skills/`. Load the relevant skill before performing any recurring task.
 
 | Skill | Path | Use When |
 |-------|------|----------|
 | Code Log Entries | `skills/code-log-entries/SKILL.md` | Writing or updating the session progress log |
-| Query Local User Agent Workspace | `skills/query-local-user-agent-workspace/SKILL.md` | Inspecting S3-backed agent workspace files for a user |
-| README Creation | `skills/readme-creation/SKILL.md` | Writing or refactoring service READMEs as conceptual architecture guides |
 
 ## Folder Structure
 
@@ -87,13 +85,6 @@ Reusable agent procedures live in `joshua/skills/`. Load the relevant skill befo
     │   ├── wip_*.md
     │   └── old_*.md
     └── skills/                      ← reusable agent procedures
-        ├── code-log-entries/        ← included agent procedure
-        │   └── SKILL.md
-        └── readme-creation/         ← example procedure...
-            ├── SKILL.md
-            └── references/
-                ├── service-readme-template.md
-                └── refactor-checklist.md
 ```
 
 
