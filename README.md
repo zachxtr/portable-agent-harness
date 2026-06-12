@@ -22,48 +22,102 @@ Think of it as the agent's **onboarding kit and working memory**. Without it, ev
 | **Refactor** | Keep code clear and consistent — rename, split, and propagate until it reads like a good essay. |
 | **Yield** | Run it locally, click the UI, check the data — validate before the next CREATE cycle. |
 
-This harness encodes Full CRY! in practice: session safeguards, coding protocols in `SOUL.md`, yield checkpoints via code logs, and depth files loaded only when needed. Full treatise (aligned principles, gotchas, origin story): [Full CRY! overview](./template/myAgent/memory/full-cry-sdlc/Full_CRY_Overview.md).
+This harness encodes Full CRY! in practice: session safeguards, coding protocols in `SOUL.md`, yield checkpoints via code logs, and depth files loaded only when needed. Full treatise (aligned principles, gotchas, origin story): [`joshua/memory/full-cry-sdlc/Full_CRY_Overview.md`](./joshua/memory/full-cry-sdlc/Full_CRY_Overview.md).
+
+### Full CRY! WIP cycle
+
+Work runs as a **WIP cycle** on `joshua/memory/wip_<topic>.md`:
+
+```
+design ──▶ create ◀──▶ refactor ◀──▶ yield ──▶ shipped
+              └──── loop 1, 2, 3… ────┘
+```
+
+**Procedure (agents):** [`joshua/skills/wip-management/SKILL.md`](./joshua/skills/wip-management/SKILL.md) — TODO grooming, frontmatter, close-out.
+
+| WIP phase | What happens |
+|-----------|----------------|
+| **Design** | Scope, architecture, decisions, TODO grooming — **no product code** yet |
+| **Create** | Full CRY! Create — scaffold, first implementation (WIP bleeds into code) |
+| **Refactor** | Full CRY! Refactor — sculpt, align `CODING_PRINCIPLES.md`, update WIP checkboxes |
+| **Yield** | Full CRY! Yield — Zach uses the system as first user; code log + `MEMORY.md` |
+| **Shipped** | Append `SHIPPED_MILESTONES.md`, archive WIP, remove from active index |
+
+
+### TODO.md and WIP cycle
+
+**WIP vs `TODO.md`:** WIP owns scoped implementation; `TODO.md` holds Active Backlog, domain concepts, **Potential new functionality**, and an Ideas dump. As ideas mature do work sprints using the **wip-management** skill with myAgent.
+
+```
+  CREATE ──bleeds──▶ REFACTOR ──bleeds──▶ YIELD
+         ▲               │                   │
+         └──── loop ─────┴───────── loop ────┘
+                (repeat until prosperous)
+                          │
+                          ▼
+              SHIPPED_MILESTONES + archive WIP
+```
+
+| Full CRY! pillar | Harness artifacts |
+|------------------|-------------------|
+| **Create** | `wip_<topic>.md` (YAML frontmatter + plan); index row in `MEMORY.md` |
+| **Refactor** | Code + WIP checkbox updates |
+| **Yield** | `code-log/code-log-YYYYMMDD.md`; `MEMORY.md` status |
+
+A WIP is a **draft**. `SHIPPED_MILESTONES.md` and git history are **truth**. The code log is how stakeholders and future sessions see *why* it mattered without reading diffs.
 
 ---
 
-## Agent Files
+## Agent files
 
-Each agent has five core files. Each owns a distinct scope — no overlap.
+Each agent has five core files under `myAgent/` (or additional agent folders you add):
 
-| File | Scope | Changes |
-|------|-------|---------|
-| `SESSION.md` | **Procedures** — session start sequence, session close checklist, and skills index. What the agent does and when. | Occasionally |
-| `IDENTITY.md` | **Persona** — who the agent is. Name, role, origin story, and character. Static facts about the agent itself. | Rarely |
-| `SOUL.md` | **Operating principles** — how the agent thinks and works. Core truths, development philosophy, coding protocols, and vibe. | Rarely, intentionally |
-| `USER.md` | **Human profile** — who the user is. Background, working style, and preferences. | As needed |
-| `MEMORY.md` | **Current state** — active project status and the authoritative map of memory files. First read every session. | Every session |
+| File | Scope |
+|------|--------|
+| `SESSION.md` | Session procedures and harness guide |
+| `IDENTITY.md` | Persona |
+| `SOUL.md` | Operating principles |
+| `USER.md` | Human profile |
+| `MEMORY.md` | Current project state — read first every session |
 
 ---
 
-## Memory Files
-
-**`MEMORY.md`** — project pickup snapshot (status, next step, topic index). **`SOUL.md`** — operating principles and pointers to methodology subfolders.
+## Memory & WIP plans
 
 | Location | Contents |
 |----------|----------|
-| `memory/*.md` (root) | Project topics (TODO, architecture, PA harness, WIPs) |
-| `memory/full-cry-sdlc/` | **Full CRY!** methodology document in folder |
-| `memory/data-experience-journey/` | Data Experience (DX) |
-| `memory/.archive/` | Retired — do not reference |
-
-Session procedures and the full harness guide: `myAgent/SESSION.md`.
+| `myAgent/memory/*.md` | Project topics, conventions, architecture |
+| `myAgent/memory/wip_*.md` | CRY work-slice plans (rename `wip_TopicX_work_plan.md` to start) |
+| `myAgent/memory/full-cry-sdlc/` | Full CRY! methodology |
+| `myAgent/memory/data-experience-journey/` | Data Experience (DX) |
+| `myAgent/memory/.archive/` | Retired docs |
 
 ---
 
 ## Skills
 
-Reusable agent procedures live in `myAgent/skills/`. Load the relevant skill before performing any recurring task.
+| Skill | Path |
+|-------|------|
+| Code Log Entries | `myAgent/skills/code-log-entries/SKILL.md` |
 
-| Skill | Path | Use When |
-|-------|------|----------|
-| Code Log Entries | `skills/code-log-entries/SKILL.md` | Writing or updating the session progress log |
+---
 
-## Folder Structure
+## Code logs
+
+Progress logs: `code-log/code-log-YYYYMMDD.md` — written for a **non-technical audience** (what was done, why it matters, what's next). No file names or code snippets in bullets.
+
+---
+
+## Repository Layout & Folder Structure
+
+| Path | Purpose |
+|------|---------|
+| [`template/`](./template/) | Sanitized files copied by `init.sh` |
+| [`examples/sample-reference/`](./examples/sample-reference/) | Mature real-world reference (not installed) |
+| [`scripts/`](./scripts/) | `init.sh`, `validate.sh` |
+| [`docs/`](./docs/) | Concepts, customizing, WIP plans, upgrading |
+| [`manifest.yaml`](./manifest.yaml) | Required paths and version |
+
 
 ```
 .agents/
@@ -119,17 +173,6 @@ Options: `--path`, `--agent`, `--force` — see `./scripts/init.sh --help`
 
 ---
 
-## Repository layout
-
-| Path | Purpose |
-|------|---------|
-| [`template/`](./template/) | Sanitized files copied by `init.sh` |
-| [`examples/sample-reference/`](./examples/sample-reference/) | Mature real-world reference (not installed) |
-| [`scripts/`](./scripts/) | `init.sh`, `validate.sh` |
-| [`docs/`](./docs/) | Concepts, customizing, WIP plans, upgrading |
-| [`manifest.yaml`](./manifest.yaml) | Required paths and version |
-
----
 
 ## Documentation
 

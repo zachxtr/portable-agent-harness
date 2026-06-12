@@ -26,8 +26,7 @@ CONTEXT
 
 This agent harness — including its context files, skill definitions, memory
 structures, and methodology — was designed and authored by Data Finn
-(https://datafinn.com) and is provided to AFAS / Joint Technology Solutions
-as part of contracted development services.
+(https://datafinn.com) and is provided to all who love code.
 
 It is published under the MIT License to encourage transparency and reuse.
 The patterns and methodology are freely adaptable for other projects.
@@ -48,31 +47,10 @@ AI PROVIDERS
   AI-powered development environment used to run and interact with agents.
   Subject to Cursor's terms of service.
 
-DEVELOPMENT TOOLS & FRAMEWORKS (used in the AFAS codebase this harness supports)
-- Angular (https://angular.io/) — MIT License
-  Frontend framework for the AFAS web application.
-
-- Node.js (https://nodejs.org/) — MIT License
-  JavaScript runtime for Lambda functions.
-
-- TypeScript (https://www.typescriptlang.org/) — Apache License 2.0
-  Typed superset of JavaScript used throughout the codebase.
-
-- AWS SAM CLI (https://aws.amazon.com/serverless/sam/) — Apache License 2.0
-  Framework for building and running serverless applications locally.
+DEVELOPMENT TOOLS & FRAMEWORKS 
 
 - Docker (https://www.docker.com/) — Apache License 2.0
-  Containerization platform used by SAM local.
-
-AWS SERVICES (Commercial Cloud Provider)
-- Amazon Web Services (https://aws.amazon.com/) — AWS Customer Agreement
-  Cloud infrastructure provider.
-  - AWS Lambda — serverless compute
-  - Amazon DynamoDB — NoSQL database
-  - Amazon Cognito — user authentication and authorization
-  - Amazon API Gateway — REST API management
-  - AWS CloudWatch — monitoring and logging
-  - Amazon S3 — object storage
+  Containerization platform.
 
 ================================================================================
 
@@ -86,5 +64,4 @@ or services listed above.
 
 ================================================================================
 
-EFFECTIVE DATE: March 11, 2026
 LAST UPDATED: May 16, 2026
