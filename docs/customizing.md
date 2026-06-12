@@ -33,7 +33,7 @@ Add another agent folder alongside `myAgent/` with the same five-file structure.
 
 ## Skills
 
-Shipped template includes `code-log-entries`. Add more under `myAgent/skills/<skill-name>/SKILL.md` and index them in `SESSION.md`.
+Shipped template includes `code-log-entries` and `wip-management`. Add more under `myAgent/skills/<skill-name>/SKILL.md` and index them in `SESSION.md`.
 
 Copy advanced skills from `examples/sample-reference/joshua/skills/` when useful — they may reference project-specific tooling.
 

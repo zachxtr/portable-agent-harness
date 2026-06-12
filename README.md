@@ -22,18 +22,18 @@ Think of it as the agent's **onboarding kit and working memory**. Without it, ev
 | **Refactor** | Keep code clear and consistent — rename, split, and propagate until it reads like a good essay. |
 | **Yield** | Run it locally, click the UI, check the data — validate before the next CREATE cycle. |
 
-This harness encodes Full CRY! in practice: session safeguards, coding protocols in `SOUL.md`, yield checkpoints via code logs, and depth files loaded only when needed. Full treatise (aligned principles, gotchas, origin story): [`joshua/memory/full-cry-sdlc/Full_CRY_Overview.md`](./joshua/memory/full-cry-sdlc/Full_CRY_Overview.md).
+This harness encodes Full CRY! in practice: session safeguards, coding protocols in `SOUL.md`, yield checkpoints via code logs, and depth files loaded only when needed. Full treatise (aligned principles, gotchas, origin story): [`template/myAgent/memory/full-cry-sdlc/Full_CRY_Overview.md`](./template/myAgent/memory/full-cry-sdlc/Full_CRY_Overview.md).
 
 ### Full CRY! WIP cycle
 
-Work runs as a **WIP cycle** on `joshua/memory/wip_<topic>.md`:
+Work runs as a **WIP cycle** on `myAgent/memory/wip_<topic>.md`:
 
 ```
 design ──▶ create ◀──▶ refactor ◀──▶ yield ──▶ shipped
               └──── loop 1, 2, 3… ────┘
 ```
 
-**Procedure (agents):** [`joshua/skills/wip-management/SKILL.md`](./joshua/skills/wip-management/SKILL.md) — TODO grooming, frontmatter, close-out.
+**Procedure (agents):** [`template/myAgent/skills/wip-management/SKILL.md`](./template/myAgent/skills/wip-management/SKILL.md) — TODO grooming, frontmatter, close-out.
 
 | WIP phase | What happens |
 |-----------|----------------|
@@ -99,6 +99,7 @@ Each agent has five core files under `myAgent/` (or additional agent folders you
 | Skill | Path |
 |-------|------|
 | Code Log Entries | `myAgent/skills/code-log-entries/SKILL.md` |
+| WIP Management | `myAgent/skills/wip-management/SKILL.md` |
 
 ---
 

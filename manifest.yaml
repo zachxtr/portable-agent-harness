@@ -17,6 +17,7 @@ placeholders:
 
 required_paths:
   - README.md
+  - LICENSE
   - myAgent/SESSION.md
   - myAgent/MEMORY.md
   - myAgent/IDENTITY.md
@@ -25,10 +26,12 @@ required_paths:
   - myAgent/memory/TODO.md
   - myAgent/memory/CODING_PRINCIPLES.md
   - myAgent/memory/ARCHITECTURE_CONCEPTS.md
+  - myAgent/memory/SHIPPED_MILESTONES.md
   - myAgent/memory/wip_TopicX_work_plan.md
   - myAgent/memory/full-cry-sdlc/Full_CRY_Overview.md
   - myAgent/memory/data-experience-journey/DATA_EXPERIENCE_JOURNEY.md
   - myAgent/skills/code-log-entries/SKILL.md
+  - myAgent/skills/wip-management/SKILL.md
   - code-log/code-log-{{CODE_LOG_DATE}}.md
 
 template_code_log_pattern: code-log-{{CODE_LOG_DATE}}.md

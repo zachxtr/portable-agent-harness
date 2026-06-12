@@ -17,13 +17,23 @@
 ## Active next step
 
 1. **First session** — Open a chat with `@.agents/myAgent`, say *"Please load context"*, then fill in `USER.md`, `IDENTITY.md`, and `memory/ARCHITECTURE_CONCEPTS.md` for your project.
-2. **Rename WIP template** — Copy `memory/wip_TopicX_work_plan.md` to `memory/wip_<your-topic>_work_plan.md` when starting a focused CRY slice.
+2. **First WIP** — When ready for a focused slice, copy `memory/wip_TopicX_work_plan.md` to `memory/wip_<topic>_work_plan.md`, set `phase: design`, and follow `skills/wip-management/SKILL.md`.
 
 ---
 
 ## In progress / known gaps
 
 - (none yet — add bullets as work surfaces)
+
+---
+
+## WIP index
+
+| WIP | Path | Phase | Load when |
+|-----|------|-------|-----------|
+| *(none active)* | — | — | — |
+
+Add a row when starting a WIP in **design**. Remove when archived to `memory/.archive/`.
 
 ---
 
@@ -34,7 +44,9 @@
 | **Backlog** | `memory/TODO.md` | Planning or prioritizing |
 | **Architecture** | `memory/ARCHITECTURE_CONCEPTS.md` | Cross-layer work, onboarding, stack questions |
 | **Coding conventions** | `memory/CODING_PRINCIPLES.md` | Writing or reviewing code |
-| **WIP slice** | `memory/wip_*.md` | Active next step references a WIP plan |
+| **WIP slice** | `memory/wip_*.md` | Active next step or WIP index references one |
+| **Shipped history** | `memory/SHIPPED_MILESTONES.md` | "When did X ship?" — not session start |
+| **Archive** | `memory/.archive/` | Retired WIPs — historical only |
 | **Full CRY!** | `memory/full-cry-sdlc/Full_CRY_Overview.md` | Process, methodology, session framing |
 | **Data Experience** | `memory/data-experience-journey/DATA_EXPERIENCE_JOURNEY.md` | Tracing data through the system |
 
