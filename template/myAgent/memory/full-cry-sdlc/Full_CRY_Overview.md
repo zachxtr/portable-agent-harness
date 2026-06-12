@@ -113,7 +113,7 @@ Code will change rapidly and possibly in unanticipated ways. You will move faste
 
 ### 4. Context Prompting.
 
-AI agents are context-illiterate autistic savants — brilliant at pattern completion, blind to implied meaning. Feed them rich context upfront. A strong system prompt covers:
+AI agents are context-illiterate savants — brilliant at pattern completion, blind to implied meaning. Feed them rich context upfront. A strong system prompt covers:
 
 - **Agent name** — Naming your agent creates a consistent relationship (e.g., "Your name is Joshua, the AI agent. I will address you as Joshua throughout our conversations. Reference: 1983 movie War Games.")
 - **Your background** — Who you are, your role, your company.
