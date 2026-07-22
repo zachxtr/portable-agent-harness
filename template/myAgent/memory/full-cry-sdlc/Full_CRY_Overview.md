@@ -193,7 +193,7 @@ The harness is the agent’s **context and working memory** — so every session
 
 | Layer | Role in Full CRY! |
 |-------|-------------------|
-| **Create** | `memory/wip_*.md` work plans — scope, decisions, ordered steps before/during implementation |
+| **Create** | `memory/wip_<topic>.md` work plans — scope, decisions, ordered steps before/during implementation |
 | **Refactor** | Code changes + `CODING_PRINCIPLES.md`; WIP updated as the plan bleeds into reality |
 | **Yield** | `code-log/` (client-readable outcomes); the dev validates as first user before the next cycle |
 
@@ -210,7 +210,7 @@ A **WIP cycle** is akin to a feature sprint in AGILE.
 **TQM mapping** — the WIP cycle draws on old-school Plan–Do–Check–Act (PDCA) from Total Quality Management (TQM) practices:
 
 | PDCA | Full CRY! WIP |
-|------|----------------|
+|------|---------------|
 | **Plan** | design |
 | **Do** | create + refactor |
 | **Check** | yield |
