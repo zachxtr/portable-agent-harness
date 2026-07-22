@@ -131,11 +131,12 @@ Communication style guidance:
 
 ![Code Barbarians — In the Field](./media/CodeBarbarians1.png)
 
-Three high-value practices when working with your AI agent army:
+Some high-value practices when working with your AI agent army:
 
 1. **Categorize your work** — When prompting, categorize the task (e.g., bug fix, new code, feature refinement). Create a simple SOP for each category, then iterate and refine it over time.
 2. **Act as a technical BPA** — Use screenshots, console logs, UI layout descriptions, etc. Be specific. The more concrete context you provide, the better the output.
 3. **Plan before code changes** — Ask the agent for a plan to approve before updating code files. Close with "Make sense? Understand?" to confirm alignment.
+4. **Use images with _full_ content** — Take screen shots of the UI, pictures from your whiteboard, etc - make sure to include important details like URLs.  YES LLMs can "read" image data.
 
 ---
 
