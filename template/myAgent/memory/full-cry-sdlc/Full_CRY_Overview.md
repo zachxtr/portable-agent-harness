@@ -189,7 +189,7 @@ Watch for these common AI coding failure modes:
 
 Full CRY! is methodology; the **[Portable Agent Harness](https://github.com/zachxtr/portable-agent-harness)** is how you **operationalize** it in a real codebase.
 
-The harness is the agent’s **onboarding kit and working memory** — so every session starts with context instead of zero. It encodes the three pillars in files, not vibes:
+The harness is the agent’s **context and working memory** — so every session starts aware of past work instead of zero. It encodes the three pillars in files, not vibes:
 
 | Layer | Role in Full CRY! |
 |-------|-------------------|
@@ -205,19 +205,9 @@ The harness is the agent’s **onboarding kit and working memory** — so every 
 - `memory/` — project depth, WIPs, `SHIPPED_MILESTONES.md`, framework docs (this file)
 - `code-log/` — session progress for stakeholders and future agents
 
-**WIP cycle** — the usual feature loop inside the harness:
+A **WIP cycle** is the new feature sprint loop inside the harness.
 
-1. **Create** — write the WIP plan  
-2. **Refactor** — implement (Create bleeds into Refactor)  
-3. **Yield** — test as first user  
-4. Repeat with light Create (WIP tweaks) or Refactor (fixes) until prosperous  
-5. **Close-out** — `SHIPPED_MILESTONES.md` + archive WIP to `memory/.archive/`
-
-**Agent procedure:** `skills/wip-management/SKILL.md` — WIP cycle steps, TODO grooming, WIP/TODO boundaries, Related backlog template.
-
-**WIP phases (body Status):** `design` → (`create` ↔ `refactor` ↔ `yield`, with shared **`loop`** counter) → `shipped` — **design** is blueprint-only; **loop** ticks up each cycle (e.g. yield 2 → create 3). 
-
-**PDCA mapping** — the WIP cycle draws on old-school Plan–Do–Check–Act (PDCA) from Total Quality Management (TQM) practices:
+**TQM mapping** — the WIP cycle draws on old-school Plan–Do–Check–Act (PDCA) from Total Quality Management (TQM) practices:
 
 | PDCA | Full CRY! WIP |
 |------|----------------|
