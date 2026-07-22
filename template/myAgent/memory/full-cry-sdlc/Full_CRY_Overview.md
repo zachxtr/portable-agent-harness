@@ -217,6 +217,15 @@ The harness is the agent’s **onboarding kit and working memory** — so every 
 
 **WIP frontmatter phases:** `design` → (`create` ↔ `refactor` ↔ `yield`, with shared **`loop`** counter) → `shipped` — **design** is blueprint-only; **loop** ticks up each cycle (e.g. yield 2 → create 3).
 
+**PDCA mapping** — the WIP cycle draws on old-school Plan–Do–Check–Act (PDCA) from Total Quality Management (TQM) practices:
+
+| PDCA | Full CRY! WIP |
+|------|----------------|
+| **Plan** | design |
+| **Do** | create + refactor |
+| **Check** | yield |
+| **Act** | shipped → archive → next slice |
+
 The portable template repo ([`portable-agent-harness`](https://github.com/datafinn/portable-agent-harness)) is MIT-licensed and meant to drop into any project. Policy Command’s `.agents/README.md` is the canonical human guide for the reference implementation; sync WIP-cycle and harness docs there when the template evolves.
 
 ---

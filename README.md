@@ -57,13 +57,15 @@ design ──▶ create ◀──▶ refactor ◀──▶ yield ──▶ shipp
               SHIPPED_MILESTONES + archive WIP
 ```
 
-| Full CRY! pillar | Harness artifacts |
-|------------------|-------------------|
-| **Create** | `wip_<topic>.md` (dates-only YAML + body plan); index row in `MEMORY.md` |
-| **Refactor** | Code + WIP checkbox updates |
-| **Yield** | `code-log/code-log-YYYYMMDD.md`; `MEMORY.md` status |
+Each WIP file is a "control procedure" with living **requirements** that drive implementation of the produced **product**. 
 
-A WIP is a **draft**. `SHIPPED_MILESTONES.md` and git history are **truth**. The code log is how stakeholders and future sessions see *why* it mattered without reading diffs.
+Think **Total Quality Management (TQM)** and **Plan–Do–Check–Act**: documented procedures govern continuous improvement, and outcomes are verified before the next cycle. **Key Performance Indicators (KPIs)** here are slice-level signals — not dashboards — documented and checked in the harness files the WIP cycle produces. Examples:
+- **Yield criteria met** — the user validated the slice as first user before stacking more work
+- **Phase and loop** — design → create ↔ refactor ↔ yield progress in the WIP Status section
+- **Checklist completion** — spec tasks closed in the active WIP body
+- **Milestones shipped** — entries appended to `SHIPPED_MILESTONES.md` when a cycle closes
+
+`SHIPPED_MILESTONES.md`, code logs, git commit histories, and the compiled running **source code** demonstrate a _baseline_ and the _improvements_ gained. Archived WIP files preserve context for stakeholders and future build sessions.
 
 WIP files use **minimal YAML** (`created`, `updated` only). Phase and loop live in the **body Status** section — see the wip-management skill.
 
