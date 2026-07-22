@@ -187,7 +187,7 @@ Watch for these common AI coding failure modes:
 
 ## Portable Agent Harness
 
-Full CRY! is methodology; the **[Portable Agent Harness](https://github.com/zachxtr/portable-agent-harness)** is how you **operationalize** it in a real codebase — installed at `.agents/` in this repo.
+Full CRY! is methodology; the **[Portable Agent Harness](https://github.com/zachxtr/portable-agent-harness)** is how you **operationalize** it in a real codebase.
 
 The harness is the agent’s **onboarding kit and working memory** — so every session starts with context instead of zero. It encodes the three pillars in files, not vibes:
 
