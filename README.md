@@ -112,7 +112,7 @@ Reusable agent procedures live in `myAgent/skills/`. Load the relevant skill bef
 | WIP Management | `skills/wip-management/SKILL.md` | Full CRY! WIP cycle, TODO grooming, archiving shipped WIPs |
 | README Creation | `skills/readme-creation/SKILL.md` | Writing or refactoring service READMEs as conceptual architecture guides |
 
-Optional project-specific skills (e.g. storage/workspace inspection) can be copied from [`examples/sample-reference/`](./examples/sample-reference/).
+Optional project-specific skills (e.g. storage/workspace inspection) can be copied from [`_examples/sample-reference/`](./_examples/sample-reference/).
 
 ---
 
@@ -167,10 +167,12 @@ The harness supports multiple agents. Each agent gets its own named folder along
 ```bash
 git clone https://github.com/zachxtr/portable-agent-harness.git
 cd portable-agent-harness
+mkdir -p /path/to/your-project
 ./scripts/init.sh /path/to/your-project
 ```
 
 - Installs to **`.agents/`** in the target repo (default agent: **`myAgent`**)
+- Target repo path must exist (`mkdir -p` first if needed)
 - Fails if `.agents/` already exists; use **`--force`** to overwrite
 - Validates with `./scripts/validate.sh /path/to/your-project`
 
@@ -198,7 +200,7 @@ Options: `--path`, `--agent`, `--force` — see `./scripts/init.sh --help`
 | Path | Purpose |
 |------|---------|
 | [`template/`](./template/) | Sanitized files copied by `init.sh` |
-| [`examples/sample-reference/`](./examples/sample-reference/) | Mature real-world reference (not installed) |
+| [`_examples/sample-reference/`](./_examples/sample-reference/) | Mature real-world reference (not installed) |
 | [`scripts/`](./scripts/) | `init.sh`, `validate.sh` |
 | [`docs/`](./docs/) | Concepts, customizing, WIP plans, upgrading |
 | [`manifest.yaml`](./manifest.yaml) | Required paths and version |
@@ -215,4 +217,4 @@ Options: `--path`, `--agent`, `--force` — see `./scripts/init.sh --help`
 
 ## Contributing
 
-Improvements to the template, docs, and scripts are welcome. Keep `examples/sample-reference/` clearly labeled as reference-only project content.
+Improvements to the template, docs, and scripts are welcome. Keep `_examples/sample-reference/` clearly labeled as reference-only project content.

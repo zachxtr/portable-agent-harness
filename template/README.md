@@ -48,6 +48,8 @@ design ──▶ create ◀──▶ refactor ◀──▶ yield ──▶ shipp
 | **Yield** | User validates; code log + `MEMORY.md` |
 | **Shipped** | Append `SHIPPED_MILESTONES.md`, archive WIP |
 
+Each WIP is a **controlled procedure** — living requirements that drive implementation. In **TQM / Plan–Do–Check–Act** terms: design plans, create + refactor do the work, yield checks outcomes, shipped acts on what you learned (archive, next slice). Slice-level **KPIs** (yield met, phase/loop progress, checklist completion, milestones shipped) are documented in harness files — not dashboards.
+
 WIP files use **dates-only YAML** (`created`, `updated`). Phase and loop live in the **body Status** section.
 
 ---

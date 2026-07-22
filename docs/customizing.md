@@ -50,7 +50,7 @@ Shipped template includes:
 
 Add more under `myAgent/skills/<skill-name>/SKILL.md` and index them in `SESSION.md`.
 
-Copy optional skills from `examples/sample-reference/joshua/skills/` when useful — they may reference project-specific tooling (e.g. S3 workspace inspection).
+Copy optional skills from `_examples/sample-reference/joshua/skills/` when useful — they may reference project-specific tooling (e.g. S3 workspace inspection).
 
 ## Full CRY! and DX
 

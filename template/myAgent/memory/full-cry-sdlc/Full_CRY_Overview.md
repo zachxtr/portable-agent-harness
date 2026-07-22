@@ -187,7 +187,7 @@ Watch for these common AI coding failure modes:
 
 ## Portable Agent Harness
 
-Full CRY! is methodology; the **[Portable Coding Agent Harness](https://github.com/datafinn/portable-agent-harness)** is how you **operationalize** it in a real codebase. Policy Command’s live instance lives in `.agents/` at the repo root (this project’s reference copy).
+Full CRY! is methodology; the **[Portable Agent Harness](https://github.com/zachxtr/portable-agent-harness)** is how you **operationalize** it in a real codebase — installed at `.agents/` in this repo.
 
 The harness is the agent’s **onboarding kit and working memory** — so every session starts with context instead of zero. It encodes the three pillars in files, not vibes:
 
@@ -195,9 +195,9 @@ The harness is the agent’s **onboarding kit and working memory** — so every 
 |-------|-------------------|
 | **Create** | `memory/wip_*.md` work plans — scope, decisions, ordered steps before/during implementation |
 | **Refactor** | Code changes + `CODING_PRINCIPLES.md`; WIP updated as the plan bleeds into reality |
-| **Yield** | `code-log/` (client-readable outcomes); Zach uses the system as first user before the next cycle |
+| **Yield** | `code-log/` (client-readable outcomes); the dev validates as first user before the next cycle |
 
-**Core structure** (each agent, e.g. `joshua/`):
+**Core structure** (each agent folder under `.agents/`, default `myAgent/`):
 
 - `SESSION.md` — procedures (start/close, WIP cycle, skills)
 - `MEMORY.md` — what is true *now* (pickup snapshot)
@@ -213,9 +213,9 @@ The harness is the agent’s **onboarding kit and working memory** — so every 
 4. Repeat with light Create (WIP tweaks) or Refactor (fixes) until prosperous  
 5. **Close-out** — `SHIPPED_MILESTONES.md` + archive WIP to `memory/.archive/`
 
-**Agent procedure:** `joshua/skills/wip-management/SKILL.md` — WIP cycle steps, TODO grooming, WIP/TODO boundaries, Related backlog template.
+**Agent procedure:** `skills/wip-management/SKILL.md` — WIP cycle steps, TODO grooming, WIP/TODO boundaries, Related backlog template.
 
-**WIP frontmatter phases:** `design` → (`create` ↔ `refactor` ↔ `yield`, with shared **`loop`** counter) → `shipped` — **design** is blueprint-only; **loop** ticks up each cycle (e.g. yield 2 → create 3).
+**WIP phases (body Status):** `design` → (`create` ↔ `refactor` ↔ `yield`, with shared **`loop`** counter) → `shipped` — **design** is blueprint-only; **loop** ticks up each cycle (e.g. yield 2 → create 3). 
 
 **PDCA mapping** — the WIP cycle draws on old-school Plan–Do–Check–Act (PDCA) from Total Quality Management (TQM) practices:
 
@@ -226,7 +226,7 @@ The harness is the agent’s **onboarding kit and working memory** — so every 
 | **Check** | yield |
 | **Act** | shipped → archive → next slice |
 
-The portable template repo ([`portable-agent-harness`](https://github.com/datafinn/portable-agent-harness)) is MIT-licensed and meant to drop into any project. Policy Command’s `.agents/README.md` is the canonical human guide for the reference implementation; sync WIP-cycle and harness docs there when the template evolves.
+Human-facing harness guide: `.agents/README.md`. Upstream template (MIT): [portable-agent-harness](https://github.com/zachxtr/portable-agent-harness). Real-world reference snapshots live in `_examples/` there — not installed by `init.sh`.
 
 ---
 
