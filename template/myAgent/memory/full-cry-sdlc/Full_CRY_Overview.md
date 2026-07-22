@@ -182,6 +182,7 @@ Watch for these common AI coding failure modes:
 1. **Extraneous multi-step logic** — AI will sometimes introduce unnecessarily complex solutions when a simpler one exists earlier or later in the execution path. Watch for over-engineering.
 2. **Long chat threads** — 120 billion parameters is a lot. Keep conversations focused on a specific topic for best results. Start a new thread when the topic shifts.
 3. **"Do extra" behavior** — Most LLMs are trained to be very helpful and do more than asked. This backfires: they end up not reusing existing functions, duplicating logic, or adding unsolicited changes. Counter this with explicit scoping in your prompts.
+4. **GitHub commit rules and frequency** - Work from a separate branch and commity often 100s of files will change in minutes and good work can be lost to dev system crashes. When in the flow I use simple "Creating...", "Refactoring..." checkpoints.
 
 ---
 
