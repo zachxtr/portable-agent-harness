@@ -1,14 +1,14 @@
 ---
 name: code-log-entries
-description: "Maintain the Policy Command development code log. Use when the user asks to document, update, or create a code log entry. Writes client-readable progress summaries into dated markdown files under code-log/. Each session entry captures what was completed, what is in progress, and what the next steps are — in plain language suitable for a non-technical audience."
+description: "Maintain the My Core Imagination development code log. Use when the user asks to document, update, or create a code log entry. Writes client-readable progress summaries into dated markdown files under code-log/. Each session entry captures what was completed, what is in progress, and what the next steps are — in plain language suitable for a non-technical audience."
 license: MIT — Copyright © 2026 Data Finn (datafinn.com)
-compatibility: Policy Command codebase. Requires access to code-log/ and git history.
+compatibility: My Core Imagination codebase. Requires access to code-log/ and git history.
 allowed-tools: read_file write_file shell_command glob
 ---
 
-## Description
+# Create code log entries
 
-Manages the Policy Command development progress log. Produces dated session entries readable by both the client and the agent (as session memory). Does not write technical developer notes — those belong in git commits and developer docs.
+Manages the development progress log. Produces dated session entries readable by both the client and the agent (as session memory). Does not write technical developer notes — those belong in git commits and developer docs.
 
 ## Instructions
 
@@ -83,9 +83,9 @@ Use this structure:
 **File header (for new files only):**
 
 ```markdown
-# Policy Command Code Log — YYYY-MM-DD
+# My Core Imagination Code Log — YYYY-MM-DD
 
-> Development progress log for Policy Command. Maintained by Data Finn (datafinn.com). Each session captures completed work, current progress, and next steps in language suitable for both stakeholders and development agents.
+> Development progress log for the code Maintained by Data Finn (datafinn.com). Each session captures completed work, current progress, and next steps in language suitable for both stakeholders and development agents.
 ```
 
 ---

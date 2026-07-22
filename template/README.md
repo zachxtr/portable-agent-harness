@@ -29,6 +29,27 @@ The agent reads session procedures, current memory, and the latest code log, the
 
 Full treatise: [`myAgent/memory/full-cry-sdlc/Full_CRY_Overview.md`](./myAgent/memory/full-cry-sdlc/Full_CRY_Overview.md)
 
+### Full CRY! WIP cycle
+
+Work runs as a **WIP cycle** on `myAgent/memory/wip_<topic>.md`:
+
+```
+design ──▶ create ◀──▶ refactor ◀──▶ yield ──▶ shipped
+              └──── loop 1, 2, 3… ────┘
+```
+
+**Procedure (agents):** [`myAgent/skills/wip-management/SKILL.md`](./myAgent/skills/wip-management/SKILL.md)
+
+| WIP phase | What happens |
+|-----------|----------------|
+| **Design** | Scope, architecture, decisions — **no product code** yet |
+| **Create** | Scaffold, first implementation |
+| **Refactor** | Sculpt, align `CODING_PRINCIPLES.md` |
+| **Yield** | User validates; code log + `MEMORY.md` |
+| **Shipped** | Append `SHIPPED_MILESTONES.md`, archive WIP |
+
+WIP files use **dates-only YAML** (`created`, `updated`). Phase and loop live in the **body Status** section.
+
 ---
 
 ## Agent files
@@ -49,19 +70,22 @@ Each agent has five core files under `myAgent/` (or additional agent folders you
 
 | Location | Contents |
 |----------|----------|
-| `myAgent/memory/*.md` | Project topics, conventions, architecture |
-| `myAgent/memory/wip_*.md` | CRY work-slice plans (rename `wip_TopicX_work_plan.md` to start) |
+| `myAgent/memory/TODO.md` | Active Backlog, domain concepts, potential, ideas dump |
+| `myAgent/memory/*.md` (root) | Project topics, conventions, shipped history |
+| `myAgent/memory/wip_*.md` | Active WIPs — copy `wip_example-topic.md` to start |
 | `myAgent/memory/full-cry-sdlc/` | Full CRY! methodology |
 | `myAgent/memory/data-experience-journey/` | Data Experience (DX) |
-| `myAgent/memory/.archive/` | Retired docs |
+| `myAgent/memory/.archive/` | Retired WIPs |
 
 ---
 
 ## Skills
 
-| Skill | Path |
-|-------|------|
-| Code Log Entries | `myAgent/skills/code-log-entries/SKILL.md` |
+| Skill | Path | Use When |
+|-------|------|----------|
+| Code Log Entries | `myAgent/skills/code-log-entries/SKILL.md` | Session progress log |
+| WIP Management | `myAgent/skills/wip-management/SKILL.md` | WIP cycle, TODO grooming, archive |
+| README Creation | `myAgent/skills/readme-creation/SKILL.md` | Service README conceptual guides |
 
 ---
 
@@ -85,7 +109,14 @@ Progress logs: `code-log/code-log-YYYYMMDD.md` — written for a **non-technical
     ├── USER.md
     ├── MEMORY.md
     ├── memory/
+    │   ├── TODO.md
+    │   ├── SHIPPED_MILESTONES.md
+    │   ├── wip_*.md
+    │   └── .archive/
     └── skills/
+        ├── code-log-entries/
+        ├── wip-management/
+        └── readme-creation/
 ```
 
 Session guide: `myAgent/SESSION.md`

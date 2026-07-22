@@ -68,7 +68,7 @@ When working on code together, please follow these protocols:
 |--------------|------|
 | `SESSION.md` | Procedures — start/close, harness guide |
 | `MEMORY.md` | Project pickup — status, next step, **project** topic index |
-| `memory/` **root** | Policy Command topics (TODO, architecture, PA harness, WIPs) |
+| `memory/` **root** | Policy Command topics (TODO, architecture, Agent harness, WIPs) |
 | `memory/<framework>/` | Full CRY!, DX — stable; not session-clean targets |
 
 **All paths in harness files are relative to `code-agents/` as the workspace root.**

@@ -13,7 +13,7 @@
 
 - Set up the portable agent harness so the development agent can maintain context between sessions
 - Established the five core agent files, memory layout, and **Full CRY!** methodology docs
-- Added a sample WIP work-plan template for future focused delivery slices
+- Added WIP template (`wip_example-topic.md`) and **wip-management** skill for focused delivery cycles
 
 ### In Progress
 
@@ -22,4 +22,4 @@
 ### Next Steps
 
 - Customize `USER.md`, `IDENTITY.md`, and `ARCHITECTURE_CONCEPTS.md` for {{PROJECT_NAME}}
-- Start the first CRY slice using a renamed `wip_*_work_plan.md` when ready
+- Start the first Full CRY! cycle using `memory/wip_<topic>.md` when ready

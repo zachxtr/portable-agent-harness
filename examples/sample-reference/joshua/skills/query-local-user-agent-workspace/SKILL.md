@@ -1,11 +1,11 @@
 ---
 name: query-local-user-agent-workspace
-description: Query the local MinIO instance to inspect the PolicyCommand agent workspace bucket. Use when verifying S3 writes, checking navigation history, annotations, briefs, policy profiles, or any agent workspace data. Use when the user asks to check, verify, or inspect what's in the agents bucket, MinIO storage, or any path under accounts/{accountId}/users/{userId}/.
+description: Query the local MinIO instance to inspect the agent workspace bucket. Use when verifying S3 writes, checking navigation history, annotations, briefs, policy profiles, or any agent workspace data. Use when the user asks to check, verify, or inspect what's in the agents bucket, MinIO storage, or any path under accounts/{accountId}/users/{userId}/.
 ---
 
 # Query Local User Agent Workspace
 
-Inspect the PolicyCommand `agents` bucket on the local MinIO instance using the AWS CLI pointed at `localhost:9000`.
+Inspect the `agents` bucket on the local MinIO instance using the AWS CLI pointed at `localhost:9000`.
 
 ## Connection Details
 
@@ -78,4 +78,4 @@ AWS_ACCESS_KEY_ID=minioadmin AWS_SECRET_ACCESS_KEY=minioadmin \
 - `tok{n}tok` = token count embedded in filename
 - Segment values are sanitized: only `[a-zA-Z0-9._-]` kept, others replaced with `-`
 
-See `UserAgentWorkspaceLayout.ts` in `packages/shared/storage-client/src/` for the full key-construction functions.
+See `layout/` in `packages/shared/storage-client/src/` for the full key-construction functions.

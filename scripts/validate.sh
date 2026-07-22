@@ -71,8 +71,11 @@ check_file "${AGENT_NAME}/IDENTITY.md"
 check_file "${AGENT_NAME}/SOUL.md"
 check_file "${AGENT_NAME}/USER.md"
 check_file "${AGENT_NAME}/memory/full-cry-sdlc/Full_CRY_Overview.md"
-check_file "${AGENT_NAME}/memory/wip_TopicX_work_plan.md"
+check_file "${AGENT_NAME}/memory/wip_example-topic.md"
+check_file "${AGENT_NAME}/memory/SHIPPED_MILESTONES.md"
 check_file "${AGENT_NAME}/skills/code-log-entries/SKILL.md"
+check_file "${AGENT_NAME}/skills/wip-management/SKILL.md"
+check_file "${AGENT_NAME}/skills/readme-creation/SKILL.md"
 
 # At least one code log
 if ! compgen -G "${AGENTS}/code-log/code-log-"*.md >/dev/null 2>&1; then

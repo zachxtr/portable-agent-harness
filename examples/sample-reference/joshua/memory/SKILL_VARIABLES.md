@@ -23,7 +23,7 @@ Every skill is a folder. Two zones in `SKILL.md`:
 ```yaml
 ---
 name: policy-command-legislative-review
-description: "…"                    ← PA INTERPRET routing (skill catalog)
+description: "…"                    ← Agent INTERPRET routing (skill catalog)
 license: …
 compatibility: …
 allowed-tools: tool_a tool_b         ← top-level; space-separated; not inside platform:
@@ -33,20 +33,23 @@ platform:
   …
 ---
 
-## Description                        ← human summary (not injected into worker LLM)
-## Instructions                       ← worker system prompt (with token substitution)
-## Gotchas
-## Examples                           ← usually points to references/few-shot.yaml
+## Description                        ← optional editorial section (included in worker prompt)
+## Instructions                       ← optional editorial section (included in worker prompt)
+## Gotchas                            ← optional editorial section (included in worker prompt)
 ```
+
+Per [agentskills.io](https://agentskills.io/specification): the **entire markdown body** after frontmatter is loaded when the skill activates. PREPARE sends the full body to the worker LLM (plus pipeline-owned citation block). Section names are conventions for authors, not pipeline filters.
+
+**Metadata docket:** ASSEMBLE and `get_*_metadata` tools inject a **preview** only — each related table is a `{ totalCount, returnedCount, truncated, moreVia, items }` envelope with DB `LIMIT` (see `metadataPreview.ts`). Not a complete record.
+
+**Authoring rule:** Skill body = domain judgment, analysis workflow, and synthesis structure. Do **not** duplicate tool catalogs (tool schemas already expose when/how to call), citation mechanics (`PrepareService` appends `CITATION REQUIREMENT`; chunk blocks carry redline/line rules), or redline reading guides (`RetrievalFormatter` injects those when chunks warrant it).
 
 **Skill directory (agentskills.io layout):**
 
 ```
 _system/skills/{skill-name}/
 ├── SKILL.md                 Required
-├── references/
-│   ├── few-shot.yaml        Optional — PREPARE appends up to 3 examples to system prompt
-│   └── …                    Optional reference docs
+├── references/              Optional reference docs
 ├── scripts/                 Optional
 ├── assets/                  Optional
 └── evals/                   Optional
@@ -58,13 +61,13 @@ _system/skills/{skill-name}/
 
 The pipeline has two distinct responsibilities:
 
-**PA INTERPRET** picks *which skill* handles the turn — based on user intent, context, and the skill's `description`.  
+**Agent INTERPRET** picks *which skill* handles the turn — based on user intent, context, and the skill's `description`.  
 **The skill's `response_mode`** then determines *how the worker agent pipeline executes* — which phases run, what each phase does, and whether the LLM is called at all.
 
-This separation is intentional: PA owns routing; the skill owns execution behavior. The worker agent pipeline is generic — `response_mode` is what makes each skill use it differently.
+This separation is intentional: Agent owns routing; the skill owns execution behavior. The worker agent pipeline is generic — `response_mode` is what makes each skill use it differently.
 
 ```
-PA INTERPRET   picks the skill (description-based routing, or UI override)
+Agent INTERPRET   picks the skill (description-based routing, or UI override)
     │
     │  ← skill boundary: everything below is driven by this skill's response_mode
     ↓
@@ -75,7 +78,7 @@ PREPARE        loads SKILL.md → WorkerExecutionPlan
 ASSEMBLE       response_mode determines what evidence is loaded
                discover  → hybrid search → bill inventory (up to 20 bills)
                direct    → hybrid search → chunks (two-pass rerank)
-               agentic   → metadata grounding only (tools retrieve the rest)
+               agentic   → metadata grounding; optional chunk bootstrap when max_chunks > 0 and key in scope
                A.2 gate: no evidence and no tools → skip GENERATE
     ↓
 GENERATE       response_mode determines how the LLM is called
@@ -90,14 +93,14 @@ Gate codes are log labels in `types/worker.ts`.
 
 ---
 
-## Zone 1A — Routing fields (PA INTERPRET)
+## Zone 1A — Routing fields (Agent INTERPRET)
 
 | Field | Role | Tuning |
 |---|---|---|
-| `name:` | Skill ID; must match folder name and PA JSON output | Fixed per skill |
+| `name:` | Skill ID; must match folder name and Agent JSON output | Fixed per skill |
 | `description:` | Catalog line for INTERPRET | **Primary routing lever** — trigger phrases, use cases, NOT-fors |
 | `license:` | agentskills.io license field | Informational |
-| `compatibility:` | Platform dependency declaration | Required when using PolicyCommand-native tools |
+| `compatibility:` | Platform dependency declaration | Required when using plaform-native tools |
 
 ---
 
@@ -115,23 +118,23 @@ Every key is **parsed once in PREPARE** and then **consumed in the phase shown b
 |---|---|---|---|
 | `discover` | Bill inventory (hybrid search → dedupe → cap-20) | Summarize LLM → platform stitches inventory markdown | Yes — always (template fallback on failure) |
 | `direct` | Chunks (hybrid search, two-pass rerank, up to 12) | Single LLM call on prefetched evidence | Yes — always |
-| `agentic` | Metadata grounding (bill/statute record) | LLM + tool loop | Yes — always |
+| `agentic` | Metadata grounding (+ optional hybrid prefetch when `max_chunks` > 0 and bill/statute key in scope) | LLM + tool loop | Yes — always |
 
 ---
 
 ### Discover mode — assembly and output
 
-**PA → worker inputs (discover path)**
+**Agent → worker inputs (discover path)**
 
 | Input | Source | Role |
 |---|---|---|
-| `displayQuery` / `ctx.question` | PA INTERPRET rewrite | GENERATE + discover italic line — **not** sent to OpenSearch |
-| `retrievalQuery` | PREPARE: `topics[]` joined (+ abbrev expand) | Hybrid primary query; bill discover adds **full PA as RRF variant** |
-| `rerankQuery` | PREPARE: full PA (bills) or framing-stripped PA (statutes) | Cohere rerank — bill discover runs **before** bill-level dedupe |
-| `topics[]` | PA INTERPRET | Hybrid keywords + topic gate tokens |
+| `displayQuery` / `ctx.question` | Agent INTERPRET rewrite | GENERATE + discover italic line — **not** sent to OpenSearch |
+| `retrievalQuery` | PREPARE: `topics[]` joined (+ abbrev expand) | Hybrid primary query; bill discover adds **full Agent question as RRF variant** |
+| `rerankQuery` | PREPARE: full Agent (bills) or framing-stripped Agent (statutes) | Cohere rerank — bill discover runs **before** bill-level dedupe |
+| `topics[]` | Agent INTERPRET | Hybrid keywords + topic gate tokens |
 | `questionRaw` | User message | Logging only |
 | `workingSession`, `defaultStatuteYear` | Working context | Bill session and statute year scope |
-| `activeFocus` | PA INTERPRET (+ `normalizeInterpretActiveFocus`) | `bill` \| `statute` \| **omit** = dual corpus (bills + statutes). Generic "legislation/laws" on raw message must **not** set `bill`. |
+| `activeFocus` | Agent INTERPRET (+ `normalizeInterpretActiveFocus`) | `bill` \| `statute` \| **omit** = dual corpus (bills + statutes). Generic "legislation/laws" on raw message must **not** set `bill`. |
 
 Worker log: `Bill inventory (pre-floor ranked)` lists all candidates with `[returned]` / `[dropped]` / `[capped]` before the returned inventory block.
 
@@ -141,7 +144,7 @@ Session/year resolution and inventory caps: `services/assemble/discoveryInventor
 
 Built by `formatBillHeader` / `formatStatuteHeader` + `DiscoveryFormatter.formatItemBlock`:
 
-- Intro: separate italic line with PA rewrite (`*…*`), not raw user text
+- Intro: separate italic line with Agent rewrite (`*…*`), not raw user text
 - Bill item: `**{billNumber}: {title}** · *filed by {sponsor}*. {summary} [CITE: N]`
 - Statute item: `**§ {section}: {title}**. {summary} [CITE: N]`
 
@@ -162,7 +165,7 @@ A **Summarize LLM call** uses the source chunks and item title to provide 1-3 se
 | `expand_query_variants` | `false` | **Retrieval** | LLM generates 2 rephrased queries; all 3 run in parallel and merge via RRF. Boosts recall — also amplifies noise on broad queries. | all |
 | `rerank_mode` | from `response_mode`† | **Retrieval** | Cohere rerank pass on prefetched chunks: `none` \| `single` \| `two-pass`. Default: `direct` → `two-pass`; `discover` + `agentic` → `none`. Override only when tuning retrieval quality. | `direct`; optional others |
 | `discovery_min_relevance_score` | — (no floor) | **Retrieval** | Bill-level score floor before cap-20. Omit for no filter. Calibrate using worker log `Score floor (tuning)` (`candidatesBeforeFilter`, `highestDroppedScore`, `lowestReturnedScore`). | `discover` |
-| `max_chunks` | `12` | **Retrieval** | Chunk count for hybrid prefetch | `direct` |
+| `max_chunks` | `12` (`direct`); `0` (`agentic` unless overridden) | **Retrieval** | Chunk count for hybrid prefetch | `direct`; `agentic` when key in scope and override set |
 | `model` | `BEDROCK_MODEL_ID` | **LLM** | Bedrock model ID for LLM calls | all |
 | `temperature` | `0.2` | **LLM** | LLM sampling temperature | all |
 | `max_tokens` | `8192` | **LLM** | Max completion tokens per LLM call | all` |
@@ -170,6 +173,7 @@ A **Summarize LLM call** uses the source chunks and item title to provide 1-3 se
 | `max_calls` | `5` | **Tools** | Max tool-loop iterations before forcing synthesis | `agentic` only — parsed for other modes but unused on turn 1 |
 | `max_parallel_tools` | `5` | **Tools** | Tool calls executed in parallel per iteration | `agentic` only — parsed for other modes but unused on turn 1 |
 | `confidence_threshold` | `0.65` | **Gate** | Minimum confidence score — below this the answer is flagged low-confidence | all |
+| `skip_align` | `false` | **Assistant** | When `true`, skip AlignService after worker unless `confidence_score` &lt; `confidence_threshold`. Resolved in PREPARE → echoed on `WorkerResponse.skip_align` | `work` mode only |
 
 † `rerank_mode` default per `response_mode`: `direct` → `two-pass`; `discover` → `none` (discovery inventory reranks internally); `agentic` → `none`. At runtime, `direct` downgrades `two-pass` → `single` when no bill/statute key is in context (`AssembleService`).
 
@@ -198,14 +202,17 @@ Space-separated, top-level. Each name must be in `PLATFORM_TOOLS` or the skill f
 
 ## Zone 2 — Markdown body
 
-| Section | Pipeline role |
-|---|---|
-| `## Description` | Documentation; not sent to worker LLM |
-| `## Instructions` | Worker system prompt → `plan.systemPrompt` |
-| `## Gotchas` | Included in prompt assembly |
-| `## Examples` | Pointer to `references/few-shot.yaml` |
+PREPARE → `plan.systemPrompt` = **full SKILL.md body** (everything below the frontmatter) + dynamic token substitution + pipeline citation block.
 
-**Dynamic tokens** (substituted in `## Instructions` by PREPARE):
+Optional `##` sections are editorial only — add or rename them as needed; all body content reaches the worker.
+
+| Section | Typical use |
+|---|---|
+| `## Description` | Short human summary (often mirrors frontmatter `description:`) |
+| `## Instructions` | Core behavior, tool workflow, response format |
+| `## Gotchas` | Domain edge cases, failure modes |
+
+**Dynamic tokens** (substituted anywhere in the body by PREPARE):
 
 | Token | Source |
 |---|---|
@@ -213,7 +220,7 @@ Space-separated, top-level. Each name must be in `PLATFORM_TOOLS` or the skill f
 | `{{BILL_KEY}}` | First bill key in scope |
 | `{{STATUTE_KEY}}` | First statute key in scope |
 | `{{WORKING_SESSION}}` | Focus session slug (e.g. `2026`, `2026E`) |
-| `{{ACTIVE_FOCUS}}` | PA `activeFocus` hint merged with keys in PREPARE (`bill` \| `statute`; empty = both) |
+| `{{ACTIVE_FOCUS}}` | Agent `activeFocus` hint merged with keys in PREPARE (`bill` \| `statute`; empty = both) |
 
 ---
 
@@ -235,26 +242,13 @@ External or guide skills without a `platform:` block receive these at parse time
 | `expand_query_variants` | `false` |
 | `requires_context_key` | `false` |
 | `max_calls` / `max_parallel_tools` | `5` / `5` |
+| `skip_align` | `false` | Agent skips tone-align after worker when `true`; overridden when VALIDATE score &lt; `confidence_threshold` |
 
 Unknown tool names in `allowed-tools` are rejected by `validateExternalSkill()`.
 
 ---
 
-## Base skills
-
-Read each skill's `platform:` block in its **SKILL.md** (paths above) for current boosts, floors, model, and thresholds — those files are the source of truth.
-
-| Skill | Turn 1 ASSEMBLE | Turn 1 GENERATE |
-|---|---|---|
-| `policy-command-legislative-review` | metadata + hybrid chunks (rerank per plan) | direct LLM on chunks |
-| `policy-command-legislative-analysis` | metadata grounding | agentic tool loop |
-| `policy-command-legislative-search` | discovery inventory per `activeFocus` | summarize LLM + platform layout (template fallback on failure) |
-
-**Tuning discover mode:** edit `policy-command-legislative-search/SKILL.md`; validate with worker log `Score floor (tuning)`. Discovery quality is knob-driven — not hardcoded topic logic in `discoveryInventory.ts`.
-
----
-
-## Three-skill routing (PA)
+## Three-skill routing (Agent)
 
 | Skill | Route when |
 |---|---|

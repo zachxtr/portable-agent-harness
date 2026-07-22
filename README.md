@@ -24,6 +24,49 @@ Think of it as the agent's **onboarding kit and working memory**. Without it, ev
 
 This harness encodes Full CRY! in practice: session safeguards, coding protocols in `SOUL.md`, yield checkpoints via code logs, and depth files loaded only when needed. Full treatise (aligned principles, gotchas, origin story): [Full CRY! overview](./template/myAgent/memory/full-cry-sdlc/Full_CRY_Overview.md).
 
+### Full CRY! WIP cycle
+
+Work runs as a **WIP cycle** on `myAgent/memory/wip_<topic>.md`:
+
+```
+design ──▶ create ◀──▶ refactor ◀──▶ yield ──▶ shipped
+              └──── loop 1, 2, 3… ────┘
+```
+
+**Procedure (agents):** [`myAgent/skills/wip-management/SKILL.md`](./template/myAgent/skills/wip-management/SKILL.md) — TODO grooming, archive, close-out.
+
+| WIP phase | What happens |
+|-----------|----------------|
+| **Design** | Scope, architecture, decisions, TODO grooming — **no product code** yet |
+| **Create** | Full CRY! Create — scaffold, first implementation (WIP bleeds into code) |
+| **Refactor** | Full CRY! Refactor — sculpt, align `CODING_PRINCIPLES.md`, update WIP checkboxes |
+| **Yield** | Full CRY! Yield — user validates as first user; code log + `MEMORY.md` |
+| **Shipped** | Append `SHIPPED_MILESTONES.md`, archive WIP, remove from active index |
+
+### TODO.md and WIP cycle
+
+**WIP vs `TODO.md`:** WIP owns scoped implementation; `TODO.md` holds Active Backlog, domain concepts, **Potential new functionality**, and an Ideas dump. As ideas mature, run work sprints using the **wip-management** skill.
+
+```
+  CREATE ──bleeds──▶ REFACTOR ──bleeds──▶ YIELD
+         ▲               │                   │
+         └──── loop ─────┴───────── loop ────┘
+                (repeat until prosperous)
+                          │
+                          ▼
+              SHIPPED_MILESTONES + archive WIP
+```
+
+| Full CRY! pillar | Harness artifacts |
+|------------------|-------------------|
+| **Create** | `wip_<topic>.md` (dates-only YAML + body plan); index row in `MEMORY.md` |
+| **Refactor** | Code + WIP checkbox updates |
+| **Yield** | `code-log/code-log-YYYYMMDD.md`; `MEMORY.md` status |
+
+A WIP is a **draft**. `SHIPPED_MILESTONES.md` and git history are **truth**. The code log is how stakeholders and future sessions see *why* it mattered without reading diffs.
+
+WIP files use **minimal YAML** (`created`, `updated` only). Phase and loop live in the **body Status** section — see the wip-management skill.
+
 ---
 
 ## Agent Files
@@ -46,47 +89,76 @@ Each agent has five core files. Each owns a distinct scope — no overlap.
 
 | Location | Contents |
 |----------|----------|
-| `memory/*.md` (root) | Project topics (TODO, architecture, PA harness, WIPs) |
-| `memory/full-cry-sdlc/` | **Full CRY!** methodology document in folder |
+| `memory/TODO.md` | Active Backlog, domain concepts, Potential new functionality, Ideas dump (YAML frontmatter) |
+| `memory/*.md` (root) | Project topics (architecture, conventions, shipped history) |
+| `memory/wip_*.md` | Active work plans — dates-only YAML; phase/loop in body Status |
+| `memory/.archive/` | Retired WIPs and superseded drafts |
+| `memory/full-cry-sdlc/` | **Full CRY!** methodology — [overview above](#methodology--full-cry) |
 | `memory/data-experience-journey/` | Data Experience (DX) |
-| `memory/.archive/` | Retired — do not reference |
 
-Session procedures and the full harness guide: `myAgent/SESSION.md`.
+Session procedures (start/close, skills index): `myAgent/SESSION.md`.
 
 ---
 
 ## Skills
 
-Reusable agent procedures live in `myAgent/skills/`. Load the relevant skill before performing any recurring task.
+Reusable agent procedures live in `myAgent/skills/`. Load the relevant skill before performing any recurring task. **WIP Management** is the canonical WIP lifecycle and TODO grooming procedure.
 
 | Skill | Path | Use When |
 |-------|------|----------|
 | Code Log Entries | `skills/code-log-entries/SKILL.md` | Writing or updating the session progress log |
+| WIP Management | `skills/wip-management/SKILL.md` | Full CRY! WIP cycle, TODO grooming, archiving shipped WIPs |
+| README Creation | `skills/readme-creation/SKILL.md` | Writing or refactoring service READMEs as conceptual architecture guides |
+
+Optional project-specific skills (e.g. storage/workspace inspection) can be copied from [`examples/sample-reference/`](./examples/sample-reference/).
+
+---
+
+## Code Logs
+
+Progress logs live in `code-log/code-log-YYYYMMDD.md`. Written for a **non-technical audience** — what was done, why it matters, what's next. No file names, no code snippets, no jargon.
+
+---
+
+## Adding Agents
+
+The harness supports multiple agents. Each agent gets its own named folder alongside `myAgent/` with the same five-file structure, scoped to their domain. Agents can share the `code-log/` folder.
+
+| Agent | Purpose (example) |
+|-------|-------------------|
+| `geovani/` | Documentation agent — maintains READMEs and system concept docs |
+| `jane/` | Security review agent — auth flows, IAM policies, vulnerability patterns |
+
+---
 
 ## Folder Structure
 
 ```
 .agents/
-├── README.md                        ← this file (human-facing)
-├── LICENSE                          
+├── README.md                        ← installed copy (human-facing)
+├── LICENSE
 ├── code-log/                        ← session progress logs
 │   └── code-log-YYYYMMDD.md
-└── myAgent/                         ← myAgent workspace
+└── myAgent/                         ← default agent workspace
     ├── SESSION.md                   ← session start/close procedures and skills index
-    ├── IDENTITY.md                  ← who myAgent is
-    ├── SOUL.md                      ← how myAgent thinks and operates
-    ├── USER.md                      ← about the user (you)
+    ├── IDENTITY.md                  ← persona
+    ├── SOUL.md                      ← operating principles
+    ├── USER.md                      ← human profile
     ├── MEMORY.md                    ← current project state + memory file map
-    ├── memory/                      ← topic docs, architecture notes, WIP plans
+    ├── memory/
     │   ├── TODO.md
+    │   ├── SHIPPED_MILESTONES.md
     │   ├── CODING_PRINCIPLES.md
     │   ├── ARCHITECTURE_CONCEPTS.md
-    │   ├── {OTHER_TOPICS}.md
-    │   ├── wip_*.md
-    │   └── old_*.md
-    └── skills/                      ← reusable agent procedures
+    │   ├── wip_*.md                 ← active WIPs (dates-only YAML; status in body)
+    │   └── .archive/                ← shipped / retired WIPs
+    └── skills/
+        ├── code-log-entries/
+        ├── wip-management/
+        └── readme-creation/
 ```
 
+---
 
 ## Install
 
@@ -134,8 +206,8 @@ Options: `--path`, `--agent`, `--force` — see `./scripts/init.sh --help`
 ## Documentation
 
 - [Customizing](./docs/customizing.md) — paths, agents, skills
-- [WIP work plans](./docs/wip-work-plans.md) — CRY slices (`wip_*_work_plan.md`)
-- [Upgrading](./docs/upgrading.md) — merging upstream changes
+- [WIP work plans](./docs/wip-work-plans.md) — Full CRY! WIP cycle (`wip_<topic>.md`)
+- [Upgrading](./docs/upgrading.md) — merging upstream changes (v0.1 → v0.2)
 
 ---
 

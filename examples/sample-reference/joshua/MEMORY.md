@@ -1,58 +1,68 @@
-# Policy Command Agent Memory
+# Agent Memory
 
 > **Pickup snapshot** — what is true *now*. Procedures → `SESSION.md`. Operating frameworks → `SOUL.md`. Project depth → topic index below.
 
-**Last updated:** 2026-06-04
+**Last updated:** 2026-07-22 (session close — Adventures Phase A)
 
 ---
 
 ## Current status
 
-**Last session closed:** 2026-06-04 — Joshua harness memory restructure: lean `MEMORY.md`, `SESSION.md` harness guide (framework vs project `memory/`), `SOUL.md` → **Full CRY!** + DX subfolders, stack layers → `ARCHITECTURE_CONCEPTS.md`; reference files for shipped history, UI tokens, Bedrock ops. Committed: `eee441f2`. Log: `code-log/code-log-20260604.md`.
+**Landing page verified in AWS production** — `https://mycoreimagination.com`, landing-only mode (`enable_fullstack = false`). Web app on ECS EC2 behind public ALB in **us-east-1**.
 
-**Verified recently:** Focus **Top Results Shown** (5/10/20) — manual QA passed (2026-06-03).
+**Web app MCI shell largely in place** — main nav, Library (books/chats/annotations), **My Contacts** (teammates table, contact details, sharing), admin Catalog, SYSTEM Books create/edit/index, legislative SYSTEM pages removed. **Dashboard dark mode** shipped (theme picker, profile-backed accent — no cross-user localStorage leak).
 
-**Last code log:** `code-log/code-log-20260604.md`
+**Adventures Phase A shipped (2026-07-22)** — list + sidebar, New Adventure wizard (manual CRUD, no Generate), edit cards, entry points (index, catalog detail, focus modal). **`quest.handle`** on embedded quest for @short-name labels. Focus modal: New Adventure pill, discovery limit on chat title, Defaults + Quest sections removed.
+
+**Home briefing cards (2026-07-21)** — Greetings, Adventure Recap, and Activity refactored for clearer roles. Card-specific system leads scope factual sources.
+
+**Activity dashboard (2026-07-21)** — page loads saved books, chats, and annotations only.
+
+**Companion UX (2026-07-21)** — avatar regen, create wizard defaults, Memory tab editable.
+
+**Library (2026-07-21)** — annotation rows per owner; reading progress shipped.
+
+**Teammates Stat cards (2026-07-21)** — companion-lens projection; Stat card grid; reading over shoulder.
+
+**Chat Phase 1 partial** — book focus, streaming chat, citation pipeline, turn companion avatars (incl. `accountId = 0` fix). Further chat/quest/companion work → `memory/TODO.md` Active Backlog.
+
+**core-service is up.** RAP builds after adventure/quest-history type fixes.
+
+**Git HEAD:** `feb9ec9` (2026-07-22) — session close; clean working tree.
 
 ---
 
 ## Active next step
 
-1. **Smoke-test pickup** — new chat, `@.dev/code-agents/joshua`, “load context”; confirm lean MEMORY + SESSION guide (no changelog noise). Harness committed (`eee441f2`).
-2. **Rolling memory Phase 1** — when approved, per `memory/wip_assistant_rollingmemory_work_handoff.md`.
-3. Then Platform Guide · Briefs parity — `memory/TODO.md`.
+**Smoke-test Adventures Phase A in Docker** — create → edit → list with catalog book; optional guide; verify focus modal + catalog CTA.
+
+**Then (pick one):** `wip_web-app-mci.md` **Phase 3** legislative cleanup · `wip_sign-out-goodbye.md` backdrop layout review · `wip_dynamic-book-covers.md` Phase 1 spike.
 
 ---
 
 ## In progress / known gaps
 
-- **Rolling memory (`ROLLINGMEMORY.md`)** — design reviewed; **no code yet** (`memory/wip_assistant_rollingmemory_work_handoff.md`)
-- **Platform Guide** — WIP complete; not implemented (`memory/wip_platform_guide_work_plan.md`)
-- **Briefs clickable links** — not implemented (`memory/wip_assistant_briefs_linkbuttons.md`)
-- Inbox Edit & Accept / batch actions — polish backlog
-- Accent picker in assistant setup wizard — not wired
-- `memory-guide.md` alignment deferred (PA product doc)
-- PdfViewer yield testing across entry points — recommended before wider use
-- Team Updates brief — still profile timestamps, not update-log
-- Briefs data parity — Tracking → BillTrackingLog; Team → `TeamActivity.tsx` feed
-- Discovery precision tuning — cross-corpus merge / `effectiveQuery`
-- Prod Bedrock rerank — `bedrock:Rerank` AccessDenied on ECS task role
-- document-scraping → indexing-service fan-out during collection
-- Unused skill knobs on discover-mode search skills
+- Full stack not deployed — RDS, Keycloak, core/rap/indexing Fargate, OpenSearch gated by `enable_fullstack`
+- Quest Guide orchestrator, quest play UI (Phase C) — not started
+- RAP legislative skills and persona copy not yet MCI domain — see `.archive/wip_rap-service-mci.md`
+- Legislative UI remnants — policy-profile routes, Briefs backend, deprecated focus store fields
+- `ChatTurnRecord` still uses `bookKeys[]` on turns — target `scope.items` with `ChatItemRef`
+- Focus modal book picker inside modal (not only catalog link) — see `memory/TODO.md` Active Backlog
+
+> **Backlog only in TODO.md** — do not list `TODO.md` Potential items here unless actively in flight.
 
 ---
 
 ## Topic index
 
-Load depth files **only when** the task needs them. **SOUL.md** is the primary pointer for framework subfolders at session start.
+> **Load on demand** — only open indexed files when the task needs them.
 
 ### Topic types
 
 | Type | Location | Purpose |
 |------|----------|---------|
 | **Framework** | `memory/<name>/` subfolders | Transferable process (Full CRY!, DX). Stable — not session-clean targets. |
-| **Project** | `memory/*.md` at root | Policy Command backlog, architecture, PA harness, conventions. |
-| **Reference** | `memory/*.md` at root | Lookup/archive (shipped history, UI tokens, ops). Not pickup. |
+| **Reference** | `memory/*.md` at root | Lookup (shipped history, UI tokens, ops). Not pickup. |
 | **WIP** | `memory/wip_*.md` | Design drafts — not ground truth until shipped. |
 | **Archive** | `memory/.archive/` | Retired docs — historical only. |
 
@@ -69,8 +79,7 @@ Load depth files **only when** the task needs them. **SOUL.md** is the primary p
 |------|---------|-----------|
 | `memory/TODO.md` | Engineering + product backlog | Prioritizing, planning |
 | `memory/CODING_PRINCIPLES.md` | Agreed conventions and patterns | Writing or reviewing code |
-| `memory/ARCHITECTURE_CONCEPTS.md` | Stack layers, keys, patterns; §10 Chat vs PA | Architecture, cross-layer work |
-| `memory/POLICY_ASSISTANT_AGENT_HARNESS.md` | PA persona files, prompts, tiers | PA, INTERPRET, rolling memory, inbox |
+| `memory/ARCHITECTURE_CONCEPTS.md` | Stack layers, keys, patterns; §10 Chat vs Agent | Architecture, cross-layer work |
 | `memory/SKILL_VARIABLES.md` | SKILL.md platform knobs | Tuning discovery / worker skills |
 
 ### Reference (not pickup)
@@ -78,21 +87,20 @@ Load depth files **only when** the task needs them. **SOUL.md** is the primary p
 | Path | Summary | Load when |
 |------|---------|-----------|
 | `memory/SHIPPED_MILESTONES.md` | Archived shipped work | “When did X ship?” — not session start |
-| `memory/UI_TOKENS.md` | `highlight-*` / `accent-*` / `annot-*` | UI theming changes |
 | `memory/OPS_BEDROCK.md` | Bedrock regions, avatar models | Local Docker / avatar / LLM env issues |
 
 ### WIP (drafts — not ground truth)
 
 | Path | Summary | Load when |
 |------|---------|-----------|
-| `memory/wip_assistant_rollingmemory_work_handoff.md` | `SESSIONMEMORY` → `ROLLINGMEMORY`; migration | Rolling memory implementation |
-| `memory/wip_platform_guide_work_plan.md` | Platform Guide routes + content | Platform Guide build |
-| `memory/wip_assistant_briefs_linkbuttons.md` | Briefs card deep links | Briefs UI work |
-| `memory/wip_data_collection_pipeline.md` | Collection / ingestion architecture | Scraper / indexing pipeline |
+| `memory/wip_sign-out-goodbye.md` | Sign-out — hero active companion + backdrop portraits | Logout UX, AuthContext, RAP briefing |
+| `memory/wip_dynamic-book-covers.md` | Dynamic book covers — 3-layer shell + presets | Book cover UI, Create/Edit Books |
+| `memory/wip_web-app-mci.md` | Web shell cleanup — Adventures Phase A shipped | Dashboard nav, catalog, library |
+| `memory/wip_public-domain-erotic-romantic-literature.md` | Public-domain reading list (content reference) | Catalog curation, content sourcing |
 
 ### Archive (`memory/.archive/`)
 
-Superseded WIPs and legacy drafts. Do not treat as current — use `SHIPPED_MILESTONES.md` or git history if needed.
+Completed and superseded WIPs. Load from `memory/.archive/` only when a task needs a specific retired doc.
 
 ---
 
@@ -101,9 +109,9 @@ Superseded WIPs and legacy drafts. Do not treat as current — use `SHIPPED_MILE
 - Full CRY! or DX treatises → framework subfolders (see `SOUL.md`)
 - Stack layer diagram → `ARCHITECTURE_CONCEPTS.md`
 - Shipped feature changelog → `memory/SHIPPED_MILESTONES.md`
+- Session narrative / changelog bullets → code log + `SHIPPED_MILESTONES.md`
 - UI token tables → `memory/UI_TOKENS.md`
 - Bedrock / container ops → `memory/OPS_BEDROCK.md`
-- Harness file catalog and load rules → `SESSION.md` § Joshua harness guide
-- Session procedures → `SESSION.md`
+- Harness layout → `../README.md`; session procedures → `SESSION.md`
 
-*Update at session close: status, active next step, in progress list, and index rows for new **project** files at `memory/` root only.*
+*Update at session close: status, active next step, in progress list, and index rows for new **project** or **WIP** files at `memory/` root only.*
