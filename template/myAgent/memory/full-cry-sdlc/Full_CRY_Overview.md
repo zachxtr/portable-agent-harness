@@ -205,7 +205,7 @@ The harness is the agent’s **context and working memory** — so every session
 - `memory/` — project depth, WIPs, `SHIPPED_MILESTONES.md`, framework docs (this file)
 - `code-log/` — session progress for stakeholders and future agents
 
-A **WIP cycle** is the new feature sprint loop inside the harness.
+A **WIP cycle** is akin to a feature sprint in AGILE.
 
 **TQM mapping** — the WIP cycle draws on old-school Plan–Do–Check–Act (PDCA) from Total Quality Management (TQM) practices:
 
