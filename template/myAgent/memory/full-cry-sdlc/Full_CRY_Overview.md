@@ -226,8 +226,6 @@ The harness is the agent’s **onboarding kit and working memory** — so every 
 | **Check** | yield |
 | **Act** | shipped → archive → next slice |
 
-Human-facing harness guide: `.agents/README.md`. Upstream template (MIT): [portable-agent-harness](https://github.com/zachxtr/portable-agent-harness). Real-world reference snapshots live in `_examples/` there — not installed by `init.sh`.
-
 ---
 
 ## Cost
