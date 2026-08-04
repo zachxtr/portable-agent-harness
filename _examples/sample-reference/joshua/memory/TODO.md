@@ -289,7 +289,7 @@ What you share with your imaginary friend stays private.  To your world.  Those 
 
 Your imaginary friend could do all kind of stuff that's outside the scope of this app if you want to connect it to the outside world like open claw.  If you have paid for I can set up a Google Business account for your world and your imaginary friend gets a user license with an email address and chat address and Avatar we set them up on Google Chat  kind of like my YouTube favorites and sharing music we could share playlists with each other through the app
 
-An initial target user market would be the parents of autistic kids.  Like I've always said AI is like communicating for the context of literate autistic cevant.  Let's give your imaginary friend context!  
+An initial target user market would be the parents of autistic kids.  Let's give your imaginary friend context!  
 
 Just like policy command assistance can see the notes that you leave on a bill they can see notes that somebody leaves on a book and know the context of that page
 
